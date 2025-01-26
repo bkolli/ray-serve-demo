@@ -107,7 +107,7 @@ class VLLMInference:
         return Response(status_code=200)
 
 def deployment_llm(args: dict) -> Application:
-        return VLLMInference.bind(
+    return VLLMInference.bind(
         model=args["model"],
         hf_auth_token=args["hf_auth_token"],
         trust_remote_code=args.get("trust_remote_code", True),
