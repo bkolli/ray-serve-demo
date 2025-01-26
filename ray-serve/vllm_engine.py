@@ -80,7 +80,7 @@ class VLLMInference:
     def _prepare_tokenizer(self,):
         from transformers import AutoTokenizer
         if self.args.trust_remote_code:
-            tokenizer = AutoTokenizer.from_pretrained(self.args.model, trust_remote_code=True)
+            tokenizer = AutoTokenizer.from_pretrained(self.args.model, trust_remote_code=True, use_auth_token=self.args.token)
         else:
             tokenizer = AutoTokenizer.from_pretrained(self.args.model)
         return tokenizer
