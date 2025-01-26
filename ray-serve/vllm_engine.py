@@ -106,5 +106,10 @@ class VLLMInference:
     async def health(self) -> Response:
         return Response(status_code=200)
 
-def deployment_llm(model: str, hf_auth_token: str, trust_remote_code: bool = True) -> Application:
-    return VLLMInference.bind(model=model, hf_auth_token=hf_auth_token, trust_remote_code=trust_remote_code)
+def deployment_llm(args: dict) -> Application:
+        return VLLMInference.bind(
+        model=args["model"],
+        hf_auth_token=args["hf_auth_token"],
+        trust_remote_code=args.get("trust_remote_code", True),
+        dtype=args.get("dtype", "float16"),
+    )
