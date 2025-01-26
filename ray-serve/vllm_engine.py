@@ -59,6 +59,7 @@ def _prepare_engine_args():
         model="microsoft/Phi-3-mini-4k-instruct",
         trust_remote_code=True,
         dtype="float16",
+        token=""
     )
     return engine_args
 
